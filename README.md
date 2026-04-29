@@ -1,16 +1,72 @@
-# React + Vite
+# Role-Based Voucher Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, frontend-only web application built with React to manage accounting vouchers. The application features a clean, professional, enterprise-grade UI built with Tailwind CSS v4 and implements robust Role-Based Access Control (RBAC) entirely on the client side using `localStorage`.
 
-Currently, two official plugins are available:
+##
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 1. Authentication System
 
-## React Compiler
+- **Secure Login Flow**: Protected routes ensuring only authenticated users can access the dashboard.
+- **Role-Based Access Control (RBAC)**:
+  - **Admin**: Full access. Can Create, Read, Edit, and Delete vouchers.
+  - **Staff**: Limited access. Can only Create and Read vouchers. Editing and Deleting actions are strictly disabled/hidden.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Voucher Management
 
-## Expanding the ESLint configuration
+- **Dynamic Voucher Creation**:
+  - Selection for Voucher Type (Payment / Received).
+  - Date and Narration fields (Narration smartly defaults to "On Account" and clears on focus).
+- **Dynamic Multi-Row Engine**:
+  - Add and remove independent rows for complex transactions.
+  - Select Account (Cash, Bank, Sales, etc.) and enter Amount.
+  - **Smart TDS Logic**: Toggle "TDS Applicable". The "TDS Type" dropdown dynamically enables and becomes required only if TDS is marked as "Yes".
+- **Real-time Calculations**: Automatically calculates the total amount across all dynamic rows.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 3. Data Persistence
+
+- No backend required! All data, including user sessions and voucher records, is securely persisted in the browser's `localStorage`.
+
+### 4. Premium UI/UX
+
+- Built with **Tailwind CSS v4** for a clean, sleek, B2B SaaS aesthetic.
+- Beautiful, highly-readable tables and tabbed navigation.
+- Smooth interactions powered by **Lucide React** icons.
+
+## Technology Stack
+
+- **Framework**: React 19 + Vite
+- **Routing**: React Router DOM v7
+- **Styling**: Tailwind CSS v4
+- **Icons**: Lucide React
+- **State Management**: React Hooks (`useState`, `useEffect`, Context API) + Local Storage
+
+## Running the Project Locally
+
+1. **Install dependencies**:
+
+   ```bash
+   npm install
+   ```
+
+2. **Start the development server**:
+
+   ```bash
+   npm run dev
+   ```
+
+3. **Open your browser**:
+   Navigate to `http://localhost:5173`
+
+## Demo Credentials
+
+Use the following credentials to test the RBAC features:
+
+**Admin Role** (Full Permissions)
+
+- **Username**: `admin`
+- **Password**: `admin123`
+
+**Staff Role** (Create & Read Only)
+
+- **Username**: `staff`
+- **Password**: `staff123`
